@@ -102,8 +102,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 --keymaps here because keymaps.lua does not work
 
--- Open file explorer with <leader>pv
---vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open file explorer" })
+vim.keymap.set({ 'n', 'x' }, '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
 
 -- Move selected block of text down in visual mode
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selected text down' })
@@ -155,7 +154,7 @@ vim.keymap.set('i', '<C-c>', '<Esc>', { desc = 'Map Ctrl-c to Escape in insert m
 vim.keymap.set('n', 'Q', '<nop>', { desc = 'Disable Q (Ex mode)' })
 
 -- Open a new tmux window and run the sessionizer command
-vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>', { desc = 'Run tmux sessionizer' })
+vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux new tmux-sessionizer<CR>', { desc = 'Run tmux sessionizer' })
 
 -- Format the current buffer with the language server's formatting feature
 vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format buffer with LSP' })

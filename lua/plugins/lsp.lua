@@ -79,7 +79,7 @@ return {
     require('mason-lspconfig').setup {
       -- Replace the language servers listed here
       -- with the ones you want to install
-      ensure_installed = { 'lua_ls', 'ts_ls', 'gopls', 'golangci_lint_ls', 'biome' },
+      ensure_installed = { 'lua_ls', 'ts_ls', 'gopls', 'golangci_lint_ls', 'biome', 'stylua' },
       handlers = {
         function(server_name)
           require('lspconfig')[server_name].setup {}
@@ -94,8 +94,8 @@ return {
 
     cmp.setup {
       sources = {
-        { name = 'copilot', group_index = 2 },
         { name = 'nvim_lsp' },
+        { name = 'path' },
         { name = 'buffer' },
         { name = 'luasnip' },
       },
