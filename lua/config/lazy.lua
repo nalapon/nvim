@@ -73,7 +73,13 @@ vim.opt.scrolloff = 10
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.diagnostic.config {
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = true,
+  severity_sort = false,
+}
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -96,8 +102,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 --keymaps here because keymaps.lua does not work
 
--- Open file explorer with <leader>pv
---vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open file explorer" })
+vim.keymap.set({ 'n', 'x' }, '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
 
 -- Move selected block of text down in visual mode
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selected text down' })
@@ -149,7 +154,7 @@ vim.keymap.set('i', '<C-c>', '<Esc>', { desc = 'Map Ctrl-c to Escape in insert m
 vim.keymap.set('n', 'Q', '<nop>', { desc = 'Disable Q (Ex mode)' })
 
 -- Open a new tmux window and run the sessionizer command
-vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>', { desc = 'Run tmux sessionizer' })
+vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux new tmux-sessionizer<CR>', { desc = 'Run tmux sessionizer' })
 
 -- Format the current buffer with the language server's formatting feature
 vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format buffer with LSP' })

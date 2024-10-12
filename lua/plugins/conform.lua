@@ -1,15 +1,16 @@
 return { -- Autoformat
   'stevearc/conform.nvim',
-  event = { 'BufWritePre' },
+  dependencies = { 'mason.nvim' },
+  lazy = true,
   cmd = { 'ConformInfo' },
   keys = {
     {
       '<leader>f',
       function()
-        require('conform').format { async = true, lsp_format = 'fallback' }
+        require('conform').format { formatters = { 'injected' }, timeout_ms = 3000 }
       end,
-      mode = '',
-      desc = '[F]ormat buffer',
+      mode = { 'n', 'v' },
+      desc = '[F]ormat buffer with injected Langs',
     },
   },
   opts = {
@@ -52,6 +53,9 @@ return { -- Autoformat
       ['markdown.mdx'] = { { 'prettierd', 'prettier' } },
       graphql = { { 'prettierd', 'prettier' } },
       handlebars = { { 'prettierd', 'prettier' } },
+    },
+    formatters = {
+      injected = { options = { ignore_errors = true } },
     },
   },
 }
