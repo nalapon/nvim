@@ -17,6 +17,12 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.g.autoformat = true
+vim.opt.expandtab = true
+vim.opt.ignorecase = true
+vim.opt.shiftwidth = 2
+vim.opt.smartindent = true
+
 vim.g.have_nerd_font = false
 
 vim.opt.number = true
@@ -53,17 +59,17 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
---vim.opt.list = true
---vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
--- Show which line your cursor is on
-vim.opt.cursorline = true
-
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+vim.opt.wrap = true -- Enable line wrapping
+vim.o.cursorline = false
+vim.opt.list = false
+vim.opt.tabstop = 2
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
