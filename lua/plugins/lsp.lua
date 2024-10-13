@@ -13,9 +13,9 @@ return {
     },
     { 'williamboman/mason-lspconfig.nvim' }, -- Optional
     { 'nvimtools/none-ls.nvim' },
-
+    { 'sontungexpt/better-diagnostic-virtual-text' },
     -- Autocompletion
-    { 'hrsh7th/nvim-cmp' }, -- Required
+    { 'hrsh7th/nvim-cmp' },     -- Required
     { 'hrsh7th/cmp-nvim-lsp' }, -- Required
     {
       'L3MON4D3/LuaSnip',
@@ -43,6 +43,10 @@ return {
     -- lsp_attach is where you enable features that only work
     -- if there is a language server active in the file
     local lsp_attach = function(client, bufnr)
+      require("better-diagnostic-virtual-text.api").setup_buf(bufnr, {
+        inline = true,
+      })
+
       local opts = { buffer = bufnr, desc = 'LSP: ' }
       vim.api.nvim_create_autocmd('CursorHold', {
         buffer = bufnr,
