@@ -20,10 +20,10 @@ return {
     }
   end,
   keys = {
-    { "<c-s>", "<CR>", ft = "copilot-chat", desc = "Submit Prompt", remap = true },
-    { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
+    { "<c-s>",     "<CR>", ft = "copilot-chat", desc = "Submit Prompt", remap = true },
+    { "<leader>A", "",     desc = "+ai",        mode = { "n", "v" } },
     {
-      "<leader>aa",
+      "<leader>cc",
       function()
         return require("CopilotChat").toggle()
       end,
@@ -31,7 +31,7 @@ return {
       mode = { "n", "v" },
     },
     {
-      "<leader>ax",
+      "<leader>Ax",
       function()
         return require("CopilotChat").reset()
       end,
@@ -39,7 +39,7 @@ return {
       mode = { "n", "v" },
     },
     {
-      "<leader>aq",
+      "<leader>Aq",
       function()
         local input = vim.fn.input("Quick Chat: ")
         if input ~= "" then

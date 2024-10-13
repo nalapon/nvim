@@ -12,6 +12,7 @@ return {
       end,
     },
     { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+    { 'nvimtools/none-ls.nvim' },
 
     -- Autocompletion
     { 'hrsh7th/nvim-cmp' }, -- Required
@@ -34,7 +35,8 @@ return {
       },
       servers = {
         ['biome'] = { 'javascript', 'typescript' },
-        ['gofmt'] = { 'go' },
+        ['gopls'] = { 'go', 'gomod', 'gowork', 'gotmpl' },
+        ['lua_ls'] = { 'lua' },
       },
     }
 
@@ -79,7 +81,7 @@ return {
     require('mason-lspconfig').setup {
       -- Replace the language servers listed here
       -- with the ones you want to install
-      ensure_installed = { 'lua_ls', 'ts_ls', 'gopls', 'golangci_lint_ls', 'biome', 'stylua' },
+      ensure_installed = { 'lua_ls', 'ts_ls', 'gopls', 'golangci_lint_ls', 'biome' },
       handlers = {
         function(server_name)
           require('lspconfig')[server_name].setup {}
