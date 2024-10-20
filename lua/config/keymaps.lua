@@ -57,13 +57,15 @@ vim.keymap.set('n', '<leader>svwm', function()
 end, { desc = 'Stop vim with me' })
 
 -- Replace the selected text with the paste register without copying the selected text
-vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste over selection without yanking' })
+vim.keymap.set('x', '<leader>op', [["_dP]], { desc = 'Paste over selection without yanking' })
 
 -- Copy to the system clipboard in normal and visual modes
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank to system clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to system clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to system clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p', { desc = 'Paste from system clipboard' })
 
 -- Copy the current line to the system clipboard in normal mode
-vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = 'Yank line to system clipboard' })
+vim.keymap.set('n', '<leader>Y', '"+Y', { desc = 'Yank line to system clipboard' })
 
 -- Delete text without copying it to a register (normal and visual modes)
 vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]], { desc = 'Delete without copying' })
@@ -102,3 +104,7 @@ vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true, desc =
 vim.keymap.set('n', '<leader><leader>', function()
   vim.cmd 'so'
 end, { desc = 'Source current file' })
+
+-- Split vertical pane
+vim.keymap.set('n', '<leader>hs', ':split<CR><C-w>w', { desc = 'split neovim window horizontal' })
+vim.keymap.set('n', '<leader>vs', ':vsplit<CR><C-w>w', { desc = 'split neovim window vertical' })
