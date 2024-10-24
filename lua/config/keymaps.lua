@@ -97,9 +97,6 @@ vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz', { desc = 'Previous location
 -- Replace the word under the cursor throughout the file
 vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Replace word under cursor globally' })
 
--- Make the current file executable (chmod +x) with <leader>x
-vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true, desc = 'Make file executable' })
-
 -- Source the current file
 vim.keymap.set('n', '<leader><leader>', function()
   vim.cmd 'so'
