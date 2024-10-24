@@ -2,6 +2,7 @@ return { -- Autoformat
   'stevearc/conform.nvim',
   dependencies = { 'mason.nvim' },
   lazy = true,
+  event = { "BufWritePre" },
   cmd = { 'ConformInfo' },
   keys = {
     {
@@ -36,7 +37,7 @@ return { -- Autoformat
       sh = { 'shfmt' },
       fish = { 'fish_indent' },
       lua = { 'stylua' },
-      go = { 'goimports', 'gofumpt', 'goimports-reviser' },
+      go = { 'goimports', "golines", 'gofumpt', 'goimports-reviser' },
       javascript = { { 'prettierd', 'prettier' } },
       typescript = { { 'prettierd', 'prettier' } },
       javascriptreact = { { 'prettierd', 'prettier' } },
