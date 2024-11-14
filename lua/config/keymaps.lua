@@ -22,9 +22,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 --keymaps here because keymaps.lua does not work
-
-vim.keymap.set({ 'n', 'x' }, '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
-
 -- Move selected block of text down in visual mode
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selected text down' })
 
@@ -45,16 +42,6 @@ vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result and center' })
 
 -- Go to the previous search result and center the cursor
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous search result and center' })
-
--- Start collaborative editing with 'vim-with-me' plugin
-vim.keymap.set('n', '<leader>vwm', function()
-  require('vim-with-me').StartVimWithMe()
-end, { desc = 'Start vim with me theprimeagean ' })
-
--- Stop collaborative editing with 'vim-with-me' plugin
-vim.keymap.set('n', '<leader>svwm', function()
-  require('vim-with-me').StopVimWithMe()
-end, { desc = 'Stop vim with me' })
 
 -- Replace the selected text with the paste register without copying the selected text
 vim.keymap.set('x', '<leader>op', [["_dP]], { desc = 'Paste over selection without yanking' })
@@ -96,11 +83,6 @@ vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz', { desc = 'Previous location
 
 -- Replace the word under the cursor throughout the file
 vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Replace word under cursor globally' })
-
--- Source the current file
-vim.keymap.set('n', '<leader><leader>', function()
-  vim.cmd 'so'
-end, { desc = 'Source current file' })
 
 -- Split vertical pane
 vim.keymap.set('n', '<leader>hs', ':split<CR><C-w>w', { desc = 'split neovim window horizontal' })
