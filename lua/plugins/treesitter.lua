@@ -19,10 +19,15 @@ return {
         indent = { enable = true },
         -- context_commentstring = { enable = true, enable_autocmd = false },
         auto_install = true,
+        autotag = {
+          enable = true,
+        },
         ensure_installed = {
           -- "bash",
           'c',
           'html',
+          'astro',
+          'css',
           'javascript',
           'json',
           'lua',
