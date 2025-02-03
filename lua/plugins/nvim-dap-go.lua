@@ -76,6 +76,12 @@ return {
       vim.keymap.set('n', '<F4>', dap.step_out)
       vim.keymap.set('n', '<F5>', dap.step_back)
       vim.keymap.set('n', '<F13>', dap.restart)
+      vim.keymap.set('n', '<Leader>w', function()
+        dapui.open()
+      end)
+      vim.keymap.set('n', '<Leader>W', function()
+        dapui.close()
+      end)
 
       dap.listeners.before.attach.dapui_config = function()
         ui.open()
