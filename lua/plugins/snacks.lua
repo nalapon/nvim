@@ -11,6 +11,7 @@ return {
       enabled = true,
       timeout = 3000,
     },
+    indent = { enabled = true, only_scope = true, only_current = true },
     dashboard = { enabled = false },
     quickfile = { enabled = false },
     statuscolumn = { enabled = true },
@@ -84,13 +85,6 @@ return {
         Snacks.terminal()
       end,
       desc = 'Toggle Terminal',
-    },
-    {
-      '<c-_>',
-      function()
-        Snacks.terminal()
-      end,
-      desc = 'which_key_ignore',
     },
     {
       ']]',
