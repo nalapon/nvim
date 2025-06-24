@@ -59,3 +59,5 @@ vim.opt.foldenable = true
 vim.opt.foldcolumn = '0'
 vim.opt.foldnestmax = 5
 vim.opt.foldtext = ''
+
+vim.diagnostic.config { virtual_text = true }

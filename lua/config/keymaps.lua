@@ -87,3 +87,23 @@ vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Split vertical pane
 vim.keymap.set('n', '<leader>hs', ':split<CR><C-w>w', { desc = 'split neovim window horizontal' })
 vim.keymap.set('n', '<leader>vs', ':vsplit<CR><C-w>w', { desc = 'split neovim window vertical' })
+
+-- Gomodify tags
+vim.keymap.set('n', '<leader>gt', function()
+  local struct_name = vim.fn.expand '<cword>'
+  if struct_name == '' then
+    print 'No struct name found under the cursor.'
+    return
+  end
+
+  local file = vim.fn.expand '%:p'
+  local cmd = string.format('gomodifytags -file "%s" -struct %s -add-tags json -w', file, struct_name)
+  local output = vim.fn.system(cmd)
+
+  if vim.v.shell_error ~= 0 then
+    print('Error running gomodifytags: ' .. output)
+  else
+    vim.cmd 'edit!' -- force reloading the file so you see the changes
+    print('Struct tags updated for ' .. struct_name)
+  end
+end, { desc = 'Add JSON tags to the struct under the cursor' })
